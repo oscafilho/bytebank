@@ -1,0 +1,33 @@
+<section class="container">
+  <h2 class="titulo">Extrato de Transferências</h2>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <th class="tabela__cabecalho__conteudo">Data</th>
+      <th class="tabela__cabecalho__conteudo">Valor</th>
+      <th class="tabela__cabecalho__conteudo">Destino</th>
+    </thead>
+    <tbody *ngIf="transferenciaExtrato?.length; else listaVazia">
+      <tr class="tabela__linha" *ngFor="let item of transferenciaExtrato">
+        <td class="tabela__conteudo">
+          {{ item?.data | date: "short"}}
+        </td>
+        <td class="tabela__conteudo">{{ item.valor | currency }}</td>
+        <td class="tabela__conteudo">{{ item.destino }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #listaVazia>
+    <p>Nenhuma transação cadastrada</p>
+  </ng-template>
+</section>
+
+
+<!--
+  O simbolo de "?"" verifica se o objeto tem o atributo ou não
+
+<div *ngFor="let item of transferenciaExtrato">
+ <p>Valor: {{ item?.valor }}</p>
+ <p>Destino: {{ item?.destino }}</p>
+ <p>Data: {{item?.data}}</p>
+</div>
+-->
